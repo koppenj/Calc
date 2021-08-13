@@ -14,18 +14,20 @@ function divide(a, b) {
     return a / b;
 }
 //this object is supposed to help take in operator sign, since I can't use eval()
-let operators = {
+/* const operators = {
     "+": function(a,b) { return a + b },
     "-": function(a,b) { return a - b },
     "*": function(a,b) { return a * b },
     "/": function(a,b) { return a / b }
-}
-//Operate needs to take in an operator sign
-/* function operate(a,operators,b) {
+} */
 
-    switch(operators) {
+
+//operator param has to be a string
+function operate(a,operator,b) {
+    let sign = operator
+    switch(sign) {
         case "+":
-            return add[a,b];
+            return add(a,b);
             break;
         case "-":
             return subract(a,b);
@@ -37,7 +39,7 @@ let operators = {
             return multiply(a,b);
             break;
     }
-} */
+}   
 
 /* const keyValues = {
     "0": 48,
