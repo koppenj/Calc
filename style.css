@@ -1,6 +1,8 @@
 #container {
     display: grid;
     margin: 50px;
+    justify-content: center;
+    border: solid black ;
   }
   
   #display {
@@ -8,18 +10,29 @@
     border-radius: 5px;
     max-width: 9em;
   }
-  
-  .button {
-    background-color: #e38686;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 7px;
+
+  .numPad {
+      display: flex;
+      max-width: 9em;
   }
   
+  .button {
+   
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 15px;
+    
+  }
+  
+  .button:hover, .numPad:hover {
+      background-color: #3e8e41
+    }
+  
+  .button:active, .numPad:active {
+    background-color: #3e8e41;
+    transform: translateY(1px);
+  }
