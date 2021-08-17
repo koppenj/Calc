@@ -1,19 +1,20 @@
-function add(a,b) {
-    return a + b ;
+/* eslint-disable no-unreachable */
+function add(a, b) {
+  return a + b;
 }
 
-function subract (a,b) {
-    return a - b;
+function subract(a, b) {
+  return a - b;
 }
 
 function multiply(a, b) {
-    return a * b;
+  return a * b;
 }
 
 function divide(a, b) {
-    return a / b;
+  return a / b;
 }
-//this object is supposed to help take in operator sign, since I can't use eval()
+// this object is supposed to help take in operator sign, since I can't use eval()
 /* const operators = {
     "+": function(a,b) { return a + b },
     "-": function(a,b) { return a - b },
@@ -21,25 +22,26 @@ function divide(a, b) {
     "/": function(a,b) { return a / b }
 } */
 
-
-//operator param has to be a string
-function operate(a,operator,b) {
-    let sign = operator
-    switch(sign) {
-        case "+":
-            return add(a,b);
-            break;
-        case "-":
-            return subract(a,b);
-            break;
-        case "/":
-            return divide(a,b);
-            break;
-        case "*":
-            return multiply(a,b);
-            break;
-    }
-}   
+// operator param has to be a string
+function operate(a, operator, b) {
+  const sign = operator;
+  switch (sign) {
+    case '+':
+      return add(a, b);
+      break;
+    case '-':
+      return subract(a, b);
+      break;
+    case '/':
+      return divide(a, b);
+      break;
+    case '*':
+      return multiply(a, b);
+      break;
+    default:
+      return 'ERROR';
+  }
+}
 
 /* const keyValues = {
     "0": 48,
