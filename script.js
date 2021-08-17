@@ -36,6 +36,10 @@ function operate(a, operator, b) {
   }
 }
 
+const buttons = document.getElementById('numPad');
+buttons.addEventListener('click', (event) => {
+  console.log(event.target);
+});
 /* const keyValues = {
     "0": 48,
     "1": 49,
