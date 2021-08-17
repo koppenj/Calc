@@ -14,13 +14,6 @@ function multiply(a, b) {
 function divide(a, b) {
   return a / b;
 }
-// this object is supposed to help take in operator sign, since I can't use eval()
-/* const operators = {
-    "+": function(a,b) { return a + b },
-    "-": function(a,b) { return a - b },
-    "*": function(a,b) { return a * b },
-    "/": function(a,b) { return a / b }
-} */
 
 // operator param has to be a string
 function operate(a, operator, b) {
@@ -54,4 +47,11 @@ function operate(a, operator, b) {
     "7": 55,
     "8": 56,
     "9": 57,
+    "+": 187,
+    "-": 189,
+    "*": 56,
+    "/":191,
+    "=": 13,
+    "AC": 27,
+    "DEL": 8,
 } */
