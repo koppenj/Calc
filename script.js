@@ -36,11 +36,11 @@ function operate(a, operator, b) {
   }
 }
 let displayValue = [];
-let firstNum = displayValue.join('');
 
 const calcDisplay = document.getElementById('display');
 const buttons = numPad.querySelectorAll('.button');
-const allClear = numPad.querySelector('.funcButton');
+const allClear = numPad.querySelector('#allClear');
+const backspaceDel = numPad.querySelector('#backspaceDel');
 
 buttons.forEach(((button) => {
   button.addEventListener('click', (event) => {
@@ -52,6 +52,12 @@ buttons.forEach(((button) => {
 allClear.addEventListener('click', () => {
   calcDisplay.replaceChildren();
   displayValue = [];
+});
+
+backspaceDel.addEventListener('click', () => {
+  displayValue.pop();
+  calcDisplay.replaceChildren();
+  calcDisplay.append(displayValue.join(''));
 });
 
 /* const keyValues = {
