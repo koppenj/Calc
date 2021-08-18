@@ -35,11 +35,19 @@ function operate(a, operator, b) {
       return 'ERROR';
   }
 }
+let displayValue = [];
+let firstNum = displayValue.join('');
 
-const buttons = document.getElementById('numPad');
-buttons.addEventListener('click', (event) => {
-  console.log(event.target);
-});
+const calcDisplay = document.getElementById('display');
+const buttons = numPad.querySelectorAll('.button');
+
+buttons.forEach(((button) => {
+  button.addEventListener('click', (event) => {
+    displayValue.push(event.target.value);
+    calcDisplay.append(event.target.value);
+  });
+}));
+
 /* const keyValues = {
     "0": 48,
     "1": 49,
