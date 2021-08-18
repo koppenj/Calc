@@ -40,6 +40,7 @@ let firstNum = displayValue.join('');
 
 const calcDisplay = document.getElementById('display');
 const buttons = numPad.querySelectorAll('.button');
+const allClear = numPad.querySelector('.funcButton');
 
 buttons.forEach(((button) => {
   button.addEventListener('click', (event) => {
@@ -47,6 +48,11 @@ buttons.forEach(((button) => {
     calcDisplay.append(event.target.value);
   });
 }));
+
+allClear.addEventListener('click', () => {
+  calcDisplay.replaceChildren();
+  displayValue = [];
+});
 
 /* const keyValues = {
     "0": 48,
