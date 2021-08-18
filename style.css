@@ -58,21 +58,21 @@
   transform: translateY(1px);
 }
 
-.button {
+.button, .mathButton {
   border-radius: 10px;
   height: 50px;
 }
 
-.button:hover {
+.button:hover, .mathButton:hover {
   background-color: grey;
 }
 
-.button:active {
+.button:active, .mathButton:active {
   background-color: darkgray;
   transform: translateY(1px);
 }
 
-.button, .equalSign, .funcButton {
+.button, .equalSign, .funcButton, .mathButton {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
   font-size: larger;
