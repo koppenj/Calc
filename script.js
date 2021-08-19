@@ -38,26 +38,38 @@ function operate(a, operator, b) {
 let displayValue = [];
 
 const calcDisplay = document.getElementById('display');
-const buttons = numPad.querySelectorAll('.button');
-const allClear = numPad.querySelector('#allClear');
-const backspaceDel = numPad.querySelector('#backspaceDel');
+const buttons = document.querySelectorAll('.button');
+const allClear = document.querySelector('#allClear');
+const backspaceDel = document.querySelector('#backspaceDel');
+const decimalButton = document.querySelector('#decimal');
 
+function oneDecimalPlease () {
+  if (displayValue.includes('.')) {
+    decimalButton.disabled = true;
+  } else {
+    decimalButton.disabled = false;
+  }
+}
+// Write key punches to display
 buttons.forEach(((button) => {
   button.addEventListener('click', (event) => {
     displayValue.push(event.target.value);
     calcDisplay.append(event.target.value);
+    oneDecimalPlease();
   });
 }));
-
+// AC key functionality
 allClear.addEventListener('click', () => {
   calcDisplay.replaceChildren();
   displayValue = [];
+  decimalButton.disabled = false;
 });
-
+// DEL key functionality
 backspaceDel.addEventListener('click', () => {
   displayValue.pop();
   calcDisplay.replaceChildren();
   calcDisplay.append(displayValue.join(''));
+  oneDecimalPlease();
 });
 
 /* const keyValues = {
