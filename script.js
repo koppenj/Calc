@@ -1,3 +1,10 @@
+const calcDisplay = document.getElementById('display');
+const buttons = document.querySelectorAll('.button');
+const allClear = document.querySelector('#allClear');
+const backspaceDel = document.querySelector('#backspaceDel');
+const decimalButton = document.querySelector('#decimal');
+const operators = document.querySelectorAll('.mathButton');
+
 /* eslint-disable no-unreachable */
 function add(a, b) {
   return a + b;
@@ -15,8 +22,10 @@ function divide(a, b) {
   return a / b;
 }
 
+let firstNum= '';
+
 // operator param has to be a string
-function operate(a, operator, b) {
+/* function operate(operator) {
   const sign = operator;
   switch (sign) {
     case '+':
@@ -34,16 +43,10 @@ function operate(a, operator, b) {
     default:
       return 'ERROR';
   }
-}
+} */
 let displayValue = [];
 
-const calcDisplay = document.getElementById('display');
-const buttons = document.querySelectorAll('.button');
-const allClear = document.querySelector('#allClear');
-const backspaceDel = document.querySelector('#backspaceDel');
-const decimalButton = document.querySelector('#decimal');
-
-function oneDecimalPlease () {
+function oneDecimalPlease() {
   if (displayValue.includes('.')) {
     decimalButton.disabled = true;
   } else {
@@ -71,6 +74,16 @@ backspaceDel.addEventListener('click', () => {
   calcDisplay.append(displayValue.join(''));
   oneDecimalPlease();
 });
+// Call operate function with click of operand
+operators.forEach(((operator) => {
+  operator.addEventListener('click', () => {
+    firstNum = displayValue.join('');
+    calcDisplay.replaceChildren();
+    displayValue = [];
+    decimalButton.disabled = false;
+    console.log(firstNum);
+  });
+}));
 
 /* const keyValues = {
     "0": 48,
