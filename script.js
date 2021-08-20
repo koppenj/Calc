@@ -4,8 +4,8 @@ const allClear = document.querySelector('#allClear');
 const backspaceDel = document.querySelector('#backspaceDel');
 const decimalButton = document.querySelector('#decimal');
 const operators = document.querySelectorAll('.mathButton');
+const equal = document.querySelector('.equalSign');
 
-/* eslint-disable no-unreachable */
 function add(a, b) {
   return a + b;
 }
@@ -22,29 +22,36 @@ function divide(a, b) {
   return a / b;
 }
 
-let firstNum= '';
-
+let firstNum;
+let secondNum;
+let result;
 // operator param has to be a string
-/* function operate(operator) {
-  const sign = operator;
-  switch (sign) {
+function operate(operatorChoice) {
+  calcDisplay.replaceChildren();
+  switch (operatorChoice) {
     case '+':
-      return add(a, b);
-      break;
+      result = add(firstNum, secondNum);
+      firstNum = result;
+      return result;
     case '-':
-      return subract(a, b);
-      break;
+      result = subract(firstNum, secondNum);
+      firstNum = result;
+      return result;
     case '/':
-      return divide(a, b);
-      break;
+      result = divide(firstNum, secondNum);
+      firstNum = result;
+      return result;
     case '*':
-      return multiply(a, b);
-      break;
+      result = multiply(firstNum, secondNum);
+      firstNum = result;
+      return result;
     default:
       return 'ERROR';
   }
-} */
+}
+
 let displayValue = [];
+let operatorChoice = '';
 
 function oneDecimalPlease() {
   if (displayValue.includes('.')) {
@@ -65,6 +72,9 @@ buttons.forEach(((button) => {
 allClear.addEventListener('click', () => {
   calcDisplay.replaceChildren();
   displayValue = [];
+  firstNum = undefined;
+  secondNum = undefined;
+  operatorChoice = '';
   decimalButton.disabled = false;
 });
 // DEL key functionality
@@ -76,14 +86,28 @@ backspaceDel.addEventListener('click', () => {
 });
 // Call operate function with click of operand
 operators.forEach(((operator) => {
-  operator.addEventListener('click', () => {
-    firstNum = displayValue.join('');
+  operator.addEventListener('click', (event) => {
+    if (!firstNum) {
+      firstNum = Number(displayValue.join(''));
+    } else {
+      secondNum = Number(displayValue.join(''));
+    }
     calcDisplay.replaceChildren();
     displayValue = [];
     decimalButton.disabled = false;
-    console.log(firstNum);
+    operatorChoice = event.target.value;
   });
 }));
+
+equal.addEventListener('click', () => {
+  if (secondNum) {
+    calcDisplay.append(operate(operatorChoice));
+  } else {
+    secondNum = Number(displayValue.join(''));
+    operate(operatorChoice);
+    calcDisplay.append(result);
+  }
+});
 
 /* const keyValues = {
     "0": 48,
