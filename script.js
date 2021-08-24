@@ -1,4 +1,4 @@
-const calcDisplay = document.getElementById('display');
+let calcDisplay = document.getElementById('display');
 const buttons = document.querySelectorAll('.button');
 const allClear = document.querySelector('#allClear');
 const backspaceDel = document.querySelector('#backspaceDel');
@@ -22,7 +22,7 @@ function divide(a, b) {
   return a / b;
 }
 
-let firstNum;
+let firstNum = 0;
 let secondNum;
 let result;
 // operator param has to be a string
@@ -50,11 +50,10 @@ function operate(operatorChoice) {
   }
 }
 
-let displayValue = [];
-let operatorChoice = '';
+let operatorChoice;
 
 function oneDecimalPlease() {
-  if (displayValue.includes('.')) {
+  if (calcDisplay.textContent.includes('.')) {
     decimalButton.disabled = true;
   } else {
     decimalButton.disabled = false;
@@ -63,41 +62,31 @@ function oneDecimalPlease() {
 // Write key punches to display
 buttons.forEach(((button) => {
   button.addEventListener('click', (event) => {
-    displayValue.push(event.target.value);
-    calcDisplay.append(event.target.value);
+    calcDisplay.textContent += event.target.value;
     oneDecimalPlease();
   });
 }));
 // AC key functionality
 allClear.addEventListener('click', () => {
   calcDisplay.replaceChildren();
-  displayValue = [];
-  firstNum = undefined;
+  firstNum = 0;
   secondNum = undefined;
   operatorChoice = '';
   decimalButton.disabled = false;
 });
 // DEL key functionality
 backspaceDel.addEventListener('click', () => {
-  displayValue.pop();
-  calcDisplay.replaceChildren();
-  calcDisplay.append(displayValue.join(''));
-  oneDecimalPlease();
+  calcDisplay.textContent.slice(0, -1);
+  console.log(calcDisplay.textContent);
+  /* oneDecimalPlease(); */
 });
 // Call operate function with click of operand
-operators.forEach(((operator) => {
+/* operators.forEach(((operator) => {
   operator.addEventListener('click', (event) => {
-    if (!firstNum) {
-      firstNum = Number(displayValue.join(''));
-    } else {
-      secondNum = Number(displayValue.join(''));
+
     }
-    calcDisplay.replaceChildren();
-    displayValue = [];
-    decimalButton.disabled = false;
-    operatorChoice = event.target.value;
   });
-}));
+})); */
 
 equal.addEventListener('click', () => {
   if (secondNum) {
