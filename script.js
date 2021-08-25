@@ -1,4 +1,4 @@
-let calcDisplay = document.getElementById('display');
+const calcDisplay = document.getElementById('display');
 const buttons = document.querySelectorAll('.button');
 const allClear = document.querySelector('#allClear');
 const backspaceDel = document.querySelector('#backspaceDel');
@@ -22,7 +22,7 @@ function divide(a, b) {
   return a / b;
 }
 
-let firstNum = 0;
+let firstNum = Number(calcDisplay.textContent);
 let secondNum;
 let result;
 // operator param has to be a string
@@ -71,30 +71,43 @@ allClear.addEventListener('click', () => {
   calcDisplay.replaceChildren();
   firstNum = 0;
   secondNum = undefined;
-  operatorChoice = '';
+  operatorChoice = undefined;
   decimalButton.disabled = false;
 });
 // DEL key functionality
-backspaceDel.addEventListener('click', () => {
-  calcDisplay.textContent.slice(0, -1);
-  console.log(calcDisplay.textContent);
-  /* oneDecimalPlease(); */
-});
+/* backspaceDel.addEventListener('click', () => {
+}); */
 // Call operate function with click of operand
-/* operators.forEach(((operator) => {
+operators.forEach(((operator) => {
   operator.addEventListener('click', (event) => {
-
+    if (secondNum === undefined && operatorChoice === undefined) {
+      firstNum = Number(calcDisplay.textContent);
+      calcDisplay.textContent = '';
+      operatorChoice = event.target.value;
+      return;
+    }
+    if (operatorChoice !== undefined) {
+      secondNum = Number(calcDisplay.textContent);
+      operate(operatorChoice);
+      calcDisplay.replaceChildren(result);
+      secondNum = undefined;
+      operatorChoice = undefined;
     }
   });
-})); */
+}));
 
 equal.addEventListener('click', () => {
   if (secondNum) {
-    calcDisplay.append(operate(operatorChoice));
-  } else {
-    secondNum = Number(displayValue.join(''));
     operate(operatorChoice);
-    calcDisplay.append(result);
+    calcDisplay.textContent = result;
+    firstNum = result;
+    secondNum = undefined;
+  } else {
+    secondNum = Number(calcDisplay.textContent);
+    operate(operatorChoice);
+    calcDisplay.replaceChildren(result);
+    secondNum = undefined;
+    operatorChoice = undefined;
   }
 });
 
