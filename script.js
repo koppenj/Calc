@@ -75,7 +75,7 @@ allClear.addEventListener('click', () => {
   firstNum = 0;
   secondNum = undefined;
   operatorChoice = undefined;
-  result = undefined
+  result = undefined;
   decimalButton.disabled = false;
 });
 // DEL key functionality
@@ -83,7 +83,6 @@ backspaceDel.addEventListener('click', () => {
   if (!result) {
     const needsEditContent = calcDisplay.textContent;
     const editedContent = needsEditContent.slice(0, -1);
-    console.log(editedContent);
     calcDisplay.replaceChildren(editedContent);
   }
 });
