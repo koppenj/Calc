@@ -79,8 +79,15 @@ allClear.addEventListener('click', () => {
   decimalButton.disabled = false;
 });
 // DEL key functionality
-/* backspaceDel.addEventListener('click', () => {
-}); */
+backspaceDel.addEventListener('click', () => {
+  if (!result) {
+    const needsEditContent = calcDisplay.textContent;
+    const editedContent = needsEditContent.slice(0, -1);
+    console.log(editedContent);
+    calcDisplay.replaceChildren(editedContent);
+  }
+});
+
 // Call operate function with click of operand
 operators.forEach(((operator) => {
   operator.addEventListener('click', (event) => {
@@ -101,6 +108,9 @@ operators.forEach(((operator) => {
 }));
 
 equal.addEventListener('click', () => {
+  if (!operatorChoice) {
+    return;
+  }
   if (secondNum) {
     operate(operatorChoice);
     calcDisplay.textContent = result;
