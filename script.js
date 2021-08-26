@@ -22,12 +22,11 @@ function divide(a, b) {
   return a / b;
 }
 
-let firstNum = Number(calcDisplay.textContent);
+let firstNum = 0;
 let secondNum;
 let result;
 // operator param has to be a string
 function operate(operatorChoice) {
-  calcDisplay.replaceChildren();
   switch (operatorChoice) {
     case '+':
       result = add(firstNum, secondNum);
@@ -62,6 +61,10 @@ function oneDecimalPlease() {
 // Write key punches to display
 buttons.forEach(((button) => {
   button.addEventListener('click', (event) => {
+    if (firstNum === result) {
+      calcDisplay.replaceChildren();
+      result = undefined;
+    }
     calcDisplay.textContent += event.target.value;
     oneDecimalPlease();
   });
@@ -72,6 +75,7 @@ allClear.addEventListener('click', () => {
   firstNum = 0;
   secondNum = undefined;
   operatorChoice = undefined;
+  result = undefined
   decimalButton.disabled = false;
 });
 // DEL key functionality
@@ -86,12 +90,12 @@ operators.forEach(((operator) => {
       operatorChoice = event.target.value;
       return;
     }
-    if (operatorChoice !== undefined) {
+    if (secondNum === undefined && operatorChoice !== undefined) {
       secondNum = Number(calcDisplay.textContent);
       operate(operatorChoice);
-      calcDisplay.replaceChildren(result);
+      calcDisplay.innerText = result;
       secondNum = undefined;
-      operatorChoice = undefined;
+      operatorChoice = event.target.value;
     }
   });
 }));
