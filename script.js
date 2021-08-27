@@ -84,6 +84,7 @@ backspaceDel.addEventListener('click', () => {
     const needsEditContent = calcDisplay.textContent;
     const editedContent = needsEditContent.slice(0, -1);
     calcDisplay.replaceChildren(editedContent);
+    oneDecimalPlease();
   }
 });
 
