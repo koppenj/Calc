@@ -1,21 +1,23 @@
 #container {
   border: solid black ;
-  border-radius: 5px;
-  margin: 0 auto;
+  border-radius: 15px;
+  margin: 5em auto;
   max-width: 600px;
   position: relative;
   width: 100%;
   padding: 50px 50px;
+  background-color: #f2f8fb;
 }
 
 #display {
 
   border: solid black 1px;
-  border-radius: 5px;
+  border-radius: 15px;
   font-size: 5rem;
   height: 80px;
   text-align: right;
   width: 100%;
+  background-color: #c4cfbc;
 }
 
 #numPad {
@@ -45,7 +47,7 @@
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: rgba(198, 105, 105, 0.762);
+  background-color: #d9a5af;
   border-radius: 10px;
   height: 50px;
 }
@@ -64,12 +66,17 @@
   height: 50px;
 }
 
+.button, .plusMinus {
+  margin: 1px;
+  background-color: #89909b;
+}
+
 .button:hover, .mathButton:hover, .plusMinus:hover {
   background-color: grey;
 }
 
 .button:active, .mathButton:active, .plusMinus:active {
-  background-color: darkgray;
+  background-color: #848b9b;
   transform: translateY(1px);
 }
 
