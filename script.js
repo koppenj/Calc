@@ -92,13 +92,13 @@ backspaceDel.addEventListener('click', () => {
 operators.forEach(((operator) => {
   operator.addEventListener('click', (event) => {
     if (secondNum === undefined && operatorChoice === undefined) {
-      firstNum = Number(calcDisplay.textContent);
+      firstNum = parseFloat(calcDisplay.textContent);
       calcDisplay.textContent = '';
       operatorChoice = event.target.value;
       return;
     }
     if (secondNum === undefined && operatorChoice !== undefined) {
-      secondNum = Number(calcDisplay.textContent);
+      secondNum = parseFloat(calcDisplay.textContent);
       operate(operatorChoice);
       calcDisplay.innerText = result;
       secondNum = undefined;
@@ -117,7 +117,7 @@ equal.addEventListener('click', () => {
     firstNum = result;
     secondNum = undefined;
   } else {
-    secondNum = Number(calcDisplay.textContent);
+    secondNum = parseFloat(calcDisplay.textContent);
     operate(operatorChoice);
     calcDisplay.replaceChildren(result);
     secondNum = undefined;
