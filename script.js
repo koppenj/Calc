@@ -3,6 +3,7 @@ const buttons = document.querySelectorAll('.button');
 const allClear = document.querySelector('#allClear');
 const backspaceDel = document.querySelector('#backspaceDel');
 const decimalButton = document.querySelector('#decimal');
+const plusMinus = document.querySelector('.plusMinus');
 const operators = document.querySelectorAll('.mathButton');
 const equal = document.querySelector('.equalSign');
 
@@ -86,6 +87,17 @@ backspaceDel.addEventListener('click', () => {
     const editedContent = needsEditContent.slice(0, -1);
     calcDisplay.replaceChildren(editedContent);
     oneDecimalPlease();
+  }
+});
+
+// Make display value positive or negative
+plusMinus.addEventListener('click', () => {
+  if (firstNum !== 0 && operatorChoice !== undefined && result !== undefined) {
+    calcDisplay.replaceChildren(calcDisplay.textContent * -1);
+  } else if (firstNum === 0 && operatorChoice === undefined) {
+    calcDisplay.replaceChildren(calcDisplay.textContent = '-');
+  } else if (firstNum !== 0 && operatorChoice !== undefined) {
+    calcDisplay.replaceChildren(calcDisplay.textContent = '-');
   }
 });
 
