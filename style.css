@@ -28,6 +28,7 @@
   background-color: #04aa6dcb;
   border-radius: 10px;
   outline: none;
+  grid-column-end: span 2;
 
 }
 
@@ -58,21 +59,21 @@
   transform: translateY(1px);
 }
 
-.button, .mathButton {
+.button, .mathButton, .plusMinus {
   border-radius: 10px;
   height: 50px;
 }
 
-.button:hover, .mathButton:hover {
+.button:hover, .mathButton:hover, .plusMinus:hover {
   background-color: grey;
 }
 
-.button:active, .mathButton:active {
+.button:active, .mathButton:active, .plusMinus:active {
   background-color: darkgray;
   transform: translateY(1px);
 }
 
-.button, .equalSign, .funcButton, .mathButton {
+.button, .equalSign, .funcButton, .mathButton, .plusMinus {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
   font-size: larger;

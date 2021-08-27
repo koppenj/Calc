@@ -25,6 +25,7 @@ function divide(a, b) {
 let firstNum = 0;
 let secondNum;
 let result;
+
 // operator param has to be a string
 function operate(operatorChoice) {
   switch (operatorChoice) {
@@ -95,14 +96,16 @@ operators.forEach(((operator) => {
       firstNum = parseFloat(calcDisplay.textContent);
       calcDisplay.textContent = '';
       operatorChoice = event.target.value;
+      oneDecimalPlease();
       return;
     }
     if (secondNum === undefined && operatorChoice !== undefined) {
       secondNum = parseFloat(calcDisplay.textContent);
       operate(operatorChoice);
-      calcDisplay.innerText = result;
+      calcDisplay.textContent = parseFloat(result.toFixed(9));
       secondNum = undefined;
       operatorChoice = event.target.value;
+      decimalButton.disabled = false;
     }
   });
 }));
@@ -113,15 +116,17 @@ equal.addEventListener('click', () => {
   }
   if (secondNum) {
     operate(operatorChoice);
-    calcDisplay.textContent = result;
+    calcDisplay.textContent = parseFloat(result.toFixed(9));
     firstNum = result;
     secondNum = undefined;
+    decimalButton.disabled = false;
   } else {
     secondNum = parseFloat(calcDisplay.textContent);
     operate(operatorChoice);
-    calcDisplay.replaceChildren(result);
+    calcDisplay.replaceChildren(calcDisplay.textContent = parseFloat(result.toFixed(9)));
     secondNum = undefined;
     operatorChoice = undefined;
+    decimalButton.disabled = false;
   }
 });
 
