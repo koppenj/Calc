@@ -20,7 +20,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+  if (b === 0) {
+    return 'ERROR';
+  // eslint-disable-next-line no-else-return
+  } else {
+    return a / b;
+  }
 }
 
 let firstNum = 0;
@@ -39,12 +44,8 @@ function operate(operatorChoice) {
       firstNum = result;
       return result;
     case '/':
-      if (secondNum === 0) {
-        result = 'O-NO';
-      } else {
-        result = divide(firstNum, secondNum);
-        firstNum = result;
-      }
+      result = divide(firstNum, secondNum);
+      firstNum = result;
       return result;
     case '*':
       result = multiply(firstNum, secondNum);
