@@ -39,6 +39,9 @@ function operate(operatorChoice) {
       firstNum = result;
       return result;
     case '/':
+      if (secondNum === 0) {
+        return 'O-NO';
+      }
       result = divide(firstNum, secondNum);
       firstNum = result;
       return result;
