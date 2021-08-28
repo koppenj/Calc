@@ -98,6 +98,8 @@ plusMinus.addEventListener('click', () => {
     calcDisplay.replaceChildren(calcDisplay.textContent = '-');
   } else if (firstNum !== 0 && operatorChoice !== undefined) {
     calcDisplay.replaceChildren(calcDisplay.textContent = '-');
+  } else {
+    calcDisplay.replaceChildren(calcDisplay.textContent = '-');
   }
 });
 
