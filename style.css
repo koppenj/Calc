@@ -1,11 +1,11 @@
 #container {
   border: solid black ;
   border-radius: 15px;
-  margin: 5em auto;
+  margin: 2em auto;
   max-width: 600px;
   position: relative;
   width: 100%;
-  padding: 50px 50px;
+  padding: 2em 2em;
   background-color: #f2f8fb;
   background-image: linear-gradient(#C0C0C0, #ffffff);
 }
@@ -91,4 +91,12 @@
 				        1px 1px 0 #000,
 				        1px -1px 0 #000,
 				        -1px -1px 0 #000;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  max-height:1em;
+  font-family: 'Courier New', Courier, monospace;
 }
