@@ -40,10 +40,11 @@ function operate(operatorChoice) {
       return result;
     case '/':
       if (secondNum === 0) {
-        return 'O-NO';
+        result = 'O-NO';
+      } else {
+        result = divide(firstNum, secondNum);
+        firstNum = result;
       }
-      result = divide(firstNum, secondNum);
-      firstNum = result;
       return result;
     case '*':
       result = multiply(firstNum, secondNum);
