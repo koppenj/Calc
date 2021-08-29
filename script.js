@@ -33,6 +33,7 @@ let secondNum;
 let result;
 
 // operator param has to be a string
+// eslint-disable-next-line consistent-return
 function operate(operatorChoice) {
   switch (operatorChoice) {
     case '+':
@@ -45,8 +46,13 @@ function operate(operatorChoice) {
       return result;
     case '/':
       result = divide(firstNum, secondNum);
-      firstNum = result;
-      return result;
+      if (result === 'ERROR') {
+        calcDisplay.replaceChildren(calcDisplay.textContent = 'Don\'t Do That');
+        break;
+      } else {
+        firstNum = result;
+        return result;
+      }
     case '*':
       result = multiply(firstNum, secondNum);
       firstNum = result;
